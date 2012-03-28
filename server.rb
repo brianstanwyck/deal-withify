@@ -66,7 +66,7 @@ get '/' do
     final.to_blob
   else
     content_type 'html'
-    'Give it a src! http://young-sword-2394.heroku.com/?src='
+    'Give it a src! http://deal-withify.heroku.com/?src='
   end
 end
 
