@@ -30,9 +30,9 @@ get '/' do
       tags.each do |tag|
         left_eye  = tag['eye_left']
         right_eye = tag['eye_right']
-        eye_angle = angle_between_eyes(left_eye, right_eye)
-        flip = tag['yaw'] > 0 && flip_flag
-        if left_eye && right_eye && eye_angle
+        if left_eye && right_eye
+          eye_angle = angle_between_eyes(left_eye, right_eye)
+          flip = tag['yaw'] > 0 && flip_flag
           cur_frame = DealWithIt.new(left_eye, right_eye, eye_angle, cur_frame, rotate, flip).shifted_glasses(-10 * n)
         end
       end
@@ -43,9 +43,9 @@ get '/' do
     tags.each do |tag|
       left_eye  = tag['eye_left']
       right_eye = tag['eye_right']
-      eye_angle = angle_between_eyes(left_eye, right_eye)
-      flip = tag['yaw'] > 0 && flip_flag
-      if left_eye && right_eye && eye_angle
+      if left_eye && right_eye
+        eye_angle = angle_between_eyes(left_eye, right_eye)
+        flip = tag['yaw'] > 0 && flip_flag
         centered_frame = DealWithIt.new(left_eye, right_eye, eye_angle, centered_frame, rotate, flip).centered_glasses
       end
     end
